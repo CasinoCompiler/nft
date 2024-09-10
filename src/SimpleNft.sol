@@ -9,7 +9,7 @@ pragma solidity 0.8.20;
  */
 
 /**
-    * Imports
+ * Imports
  */
 import {ERC721} from "@OZ/token/ERC721/ERC721.sol";
 // @Order Imports, Interfaces, Libraries, Contracts
@@ -19,51 +19,49 @@ import {ERC721} from "@OZ/token/ERC721/ERC721.sol";
  */
 contract SimpleNft is ERC721 {
     /**
-        * Type Declarations
+     * Type Declarations
      */
 
     /**
-        * State Variables
+     * State Variables
      */
     uint256 private s_tokenCounter;
     mapping(uint256 => string) private s_tokenIdToUri;
 
     /**
-        * Events
+     * Events
      */
 
     /**
-        * Constructor
+     * Constructor
      */
     constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {
         s_tokenCounter = 0;
     }
 
     /**
-        * Modifiers
+     * Modifiers
      */
 
     /**
-        * Functions
+     * Functions
      */
     // @Order recieve, fallback, external, public, internal, private
 
     function mint(string memory tokenUri) public {
         s_tokenIdToUri[s_tokenCounter] = tokenUri;
         _safeMint(msg.sender, s_tokenCounter);
-        s_tokenCounter ++;
-
+        s_tokenCounter++;
     }
 
     /**
-        * Getter Functions
+     * Getter Functions
      */
-
-    function tokenURI(uint256 tokenID) public view override returns(string memory){
+    function tokenURI(uint256 tokenID) public view override returns (string memory) {
         return s_tokenIdToUri[tokenID];
     }
 
-    function getMintCount() public view returns(uint256){
-            return s_tokenCounter;
+    function getMintCount() public view returns (uint256) {
+        return s_tokenCounter;
     }
 }

@@ -11,7 +11,7 @@ contract DeploySimpleNft is Script {
 
     //address deployerAddress = address(1);
 
-    function run() external returns(SimpleNft){
+    function run() external returns (SimpleNft) {
         vm.startBroadcast();
         simpleNft = new SimpleNft(name, symbol);
         vm.stopBroadcast();

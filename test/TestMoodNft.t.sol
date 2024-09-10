@@ -21,7 +21,7 @@ contract TestMoodNft is Test {
                                   MINT
     //////////////////////////////////////////////////////////////*/
 
-    modifier bobMintedToken(){
+    modifier bobMintedToken() {
         hoax(bob, GAS_MONEY);
         moodNft.mint();
         _;
@@ -30,13 +30,13 @@ contract TestMoodNft is Test {
     /*//////////////////////////////////////////////////////////////
                                FLIP MOOD
     //////////////////////////////////////////////////////////////*/
-    function test_flipMood() public bobMintedToken{
+    function test_flipMood() public bobMintedToken {
         hoax(bob, GAS_MONEY);
         moodNft.flipMood(0);
         assert(moodNft.getTokenOwnerMood(0) == MoodNft.Mood.SAD);
     }
 
-    function test_NonOwnerCannotFlipMood() public bobMintedToken{
+    function test_NonOwnerCannotFlipMood() public bobMintedToken {
         vm.expectRevert(MoodNft.MoodNft__CantFlipMoodIfNotOwner.selector);
         hoax(alice, GAS_MONEY);
         moodNft.flipMood(0);
@@ -46,7 +46,7 @@ contract TestMoodNft is Test {
                                 TOKENURI
     //////////////////////////////////////////////////////////////*/
 
-    function test_ImageUri() public bobMintedToken{
+    function test_ImageUri() public bobMintedToken {
         string memory test = moodNft.tokenURI(0);
         console.log("tokenURI: %s", test);
     }

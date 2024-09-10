@@ -6,7 +6,7 @@ import {DevOpsTools} from "@devops/src/DevOpsTools.sol";
 import {SimpleNft} from "../src/SimpleNft.sol";
 import {DeploySimpleNft} from "./DeploySimpleNft.s.sol";
 
-contract InteractWithSimpleNft is Script{
+contract InteractWithSimpleNft is Script {
     string public tokenUriPug = "QmSsYRx3LpDAb1GZQm7zZ1AuHZjfbPkD6J7s9r41xu1mf8";
 
     function run() public {
